@@ -31,7 +31,8 @@ main {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    width: 30%;
+    width: 396px;
+    height: 380px;
     background-color: #A2AADB;
     border: 5px solid #898AC4;
     padding: 20px;
