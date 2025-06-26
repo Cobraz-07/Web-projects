@@ -11,12 +11,17 @@
     <main>
         <div class="container">
             <h1 class="title">ShadeShift</h1>
-            <label for="color-input">Choose a color:</label>
-            <input type="color" id="color-input" name="color-input">
-            <label for="shade-input">Adjust shade:</label>
-            <input type="range" value="0" min="0" max="100" id="shade-input" name="shade-input">
+            <div class="input-container">
+                <label for="color-input">Choose a color:</label>
+                <input type="text" id="color-input" name="color-input">
+            </div>
+            <div class="input-container">
+                <label for="shade-input">Adjust shade:</label>
+                <input type="range" value="0" min="0" max="100" id="shade-input" name="shade-input">
+            </div>
             <p>Input Color</p>
             <div id="inputColor" class="box"></div>
+            <p>Output Color</p>
             <div id="outputColor" class="box"></div>
         </div>
     </main>
