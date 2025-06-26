@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task board</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="preflight.css">
+    <title>ShadeShift</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
     <script src="index.js" async></script>
 </head>
 <body>
     <main>
-        
+        <div class="container">
+            <h1 class="title">ShadeShift</h1>
+            <label for="color-input">Choose a color:</label>
+            <input type="color" id="color-input" name="color-input">
+            <label for="shade-input">Adjust shade:</label>
+            <input type="range" value="0" min="0" max="100" id="shade-input" name="shade-input">
+            <p>Input Color</p>
+            <div id="inputColor" class="box"></div>
+            <div id="outputColor" class="box"></div>
+        </div>
     </main>
 </body>
 </html>
