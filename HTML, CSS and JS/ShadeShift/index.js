@@ -4,6 +4,11 @@ const shadeInput = document.getElementById('shade-input');
 const inputColor = document.getElementById('inputColor');
 const outputColor = document.getElementById('outputColor');
 const percentageText = document.getElementById('slider-text');
+const outputText = document.getElementById('output-Hex');
+const inputText = document.getElementById('input-Hex');
+const toggleBtn = document.getElementById('toggleBtn');
+const lightenText = document.getElementById('lighten-text');
+const darkenText = document.getElementById('darken-text');
 
 // 2. Function declarations
 function isValidHex(hex) {
@@ -42,12 +47,21 @@ function rgbToHex(r, g, b) {
            b.toString(16).padStart(2, '0');
 };
 
-function alterColor(hex, percentage) {
+function lightenColor(hex, percentage) {
     let modifier = Math.floor((percentage / 100) * 255); // Calculate the modifier based on the percentage
     let { r, g, b } = hexToRgb(hex);
     r = Math.min(255, Math.max(0, r + modifier));
     g = Math.min(255, Math.max(0, g + modifier));
     b = Math.min(255, Math.max(0, b + modifier));
+    return rgbToHex(r, g, b);
+}
+
+function darkenColor(hex, percentage) {
+    let modifier = Math.floor((percentage / 100) * 255); // Calculate the modifier based on the percentage
+    let { r, g, b } = hexToRgb(hex);
+    r = Math.min(255, Math.max(0, r - modifier));
+    g = Math.min(255, Math.max(0, g - modifier));
+    b = Math.min(255, Math.max(0, b - modifier));
     return rgbToHex(r, g, b);
 }
 
@@ -57,6 +71,7 @@ hexInput.addEventListener("keyup", () => {
         // Avoid double #
         const value = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
         inputColor.style.backgroundColor = value; // Set the background color of the input box
+        inputText.textContent = value; // Update the input text with the hex color 
     } else {
         inputColor.style.backgroundColor = ""; // Reset the background color if invalid
     }
@@ -64,12 +79,30 @@ hexInput.addEventListener("keyup", () => {
 
 shadeInput.addEventListener("input", () => {
     percentageText.textContent = shadeInput.value + "%"; // Update the percentage text
-        if (isValidHex(hexInput.value)) { 
-            alterColor(hexInput.value, shadeInput.value); // Alter the color based on the input hex and shade percentage
-            const alteredColor = alterColor(hexInput.value, shadeInput.value);
+        if (isValidHex(hexInput.value)&& toggleBtn.classList.contains('active') === false) { 
+            lightenColor(hexInput.value, shadeInput.value); // Alter the color based on the input hex and shade percentage
+            const alteredColor = lightenColor(hexInput.value, shadeInput.value);
             outputColor.style.backgroundColor = "#" + alteredColor; // Set the background color of the output box
+            outputText.textContent = "#" + alteredColor; // Update the output text with the altered hex color
+    } else if (isValidHex(hexInput.value)&& toggleBtn.classList.contains('active')) {
+            darkenColor(hexInput.value, shadeInput.value);
+            const alteredColor = darkenColor(hexInput.value, shadeInput.value);
+            outputColor.style.backgroundColor = "#" + alteredColor;
+            outputText.textContent = "#" + alteredColor;
     } else {
         outputColor.style.backgroundColor = ""; // Reset the background color if invalid
     }
 
+});
+
+toggleBtn.addEventListener('click', () => {
+    if (toggleBtn.classList.contains('active')) {
+        toggleBtn.classList.remove('active');
+        lightenText.classList.remove('unselected');
+        darkenText.classList.add('unselected');
+    } else {
+        toggleBtn.classList.add('active');
+        lightenText.classList.add('unselected');
+        darkenText.classList.remove('unselected');
+    }
 });

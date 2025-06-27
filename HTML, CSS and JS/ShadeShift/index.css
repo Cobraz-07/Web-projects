@@ -32,7 +32,7 @@ main {
     flex-direction: column;
     text-align: center;
     width: 396px;
-    height: 380px;
+    height: 480px;
     background-color: #A2AADB;
     border: 5px solid #898AC4;
     padding: 20px;
@@ -53,6 +53,7 @@ label {
     color: #2c2d59;
     margin: 10px 5px;
     padding: 0;
+    transition: all 0.3s ease-in-out;
 }
 
 p {
@@ -60,17 +61,7 @@ p {
     font-family: "Roboto Mono", system-ui;
     color: #2c2d59;
     width: 100%;
-    text-align: left;
     margin: 10px 5px 5px 10px;
-    padding: 0;
-}
-
-.box {
-    width: 400px;
-    height: 50px;
-    border: 1px solid #898AC4;
-    border-radius: 8px;
-    margin: 0;
     padding: 0;
 }
 
@@ -97,4 +88,58 @@ p {
 
 #slider-text {
     width: 30px;
+}
+
+.color-boxes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.color-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.box {
+    width: 80%;
+    height: 120px;
+    border: 1px solid #898AC4;
+    border-radius: 8px;
+    margin-top: 5px;
+    padding: 0;
+}
+
+.toggle-btn {
+    width: 50px;
+    height: 25px;
+    background-color: #898AC4;
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+}
+
+.inner-circle {
+    width: 20px;
+    height: 20px;
+    background-color: #2c2d59;
+    border-radius: 50%;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.toggle-btn.active .inner-circle {
+    left: 27.5px; /* Move the circle to the right */
+}
+
+.unselected {
+    color: gray;
+    transition: all 0.3s ease-in-out;
 }

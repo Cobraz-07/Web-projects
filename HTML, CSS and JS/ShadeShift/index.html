@@ -16,13 +16,28 @@
                 <input type="text" id="color-input" name="color-input" placeholder="#000000">
             </div>
             <div class="input-container">
+                <label class="" id="lighten-text">lighten</label>
+                <div id="toggleBtn" class="toggle-btn">
+                    <div class="inner-circle"></div> 
+                </div>
+                <label class="unselected" id="darken-text">darken</label>
+            </div>
+            <div class="input-container">
                 <label for="shade-input" id="slider-text">0%</label>
                 <input type="range" value="0" min="0" max="100" id="shade-input" name="shade-input">
             </div>
-            <p>Input Color</p>
-            <div id="inputColor" class="box"></div>
-            <p>Output Color</p>
-            <div id="outputColor" class="box"></div>
+            <div class="color-boxes">
+                <div class="color-group">
+                    <p>Input Color</p>
+                    <div id="inputColor" class="box"></div>
+                    <p id="input-Hex"></p>
+                </div>
+                <div class="color-group">
+                    <p>Output Color</p>
+                    <div id="outputColor" class="box"></div>
+                    <p id="output-Hex"></p>
+                </div>
+            </div>
         </div>
     </main>
 </body>
