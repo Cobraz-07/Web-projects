@@ -94,3 +94,7 @@ p {
     width: 50%;
     accent-color: #898AC4;
 }
+
+#slider-text {
+    width: 30px;
+}
