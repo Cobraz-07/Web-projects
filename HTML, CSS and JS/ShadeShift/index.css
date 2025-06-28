@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
+/* General resets and body */
 * {
     margin: 0;
     padding: 0;
@@ -25,6 +26,7 @@ main {
     height: 100%;
 }
 
+/* Container for the app */
 .container {
     display: flex;
     align-items: center;
@@ -38,33 +40,16 @@ main {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 8px 8px rgba(0, 0, 0, 0.2);
-
 }
 
+/* App Title */
 .title {
     font-size: 2rem;
     margin-bottom: 16px;
     font-family: "Bitcount Grid Double", system-ui;
 }
 
-label {
-    font-size: 1.2rem;
-    font-family: "Roboto Mono", system-ui;
-    color: #2c2d59;
-    margin: 10px 5px;
-    padding: 0;
-    transition: all 0.3s ease-in-out;
-}
-
-p {
-    font-size: 1rem;
-    font-family: "Roboto Mono", system-ui;
-    color: #2c2d59;
-    width: 100%;
-    margin: 10px 5px 5px 10px;
-    padding: 0;
-}
-
+/* Hex color input */
 .input-container {
     display: flex;
     justify-content: left;
@@ -81,40 +66,16 @@ p {
     padding: 5px;
 }
 
-[type="range"] {
-    width: 50%;
-    accent-color: #898AC4;
-}
-
-#slider-text {
-    width: 30px;
-}
-
-.color-boxes {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.color-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-}
-
-.box {
-    width: 80%;
-    height: 120px;
-    border: 1px solid #898AC4;
-    border-radius: 8px;
-    margin-top: 5px;
+label {
+    font-size: 1.2rem;
+    font-family: "Roboto Mono", system-ui;
+    color: #2c2d59;
+    margin: 10px 5px;
     padding: 0;
+    transition: all 0.3s ease-in-out;
 }
 
+/* Lighten/Darken toggle switch */
 .toggle-btn {
     width: 50px;
     height: 25px;
@@ -142,4 +103,49 @@ p {
 .unselected {
     color: gray;
     transition: all 0.3s ease-in-out;
+}
+
+/* Shade percentage slider */
+[type="range"] {
+    width: 50%;
+    accent-color: #898AC4;
+}
+
+#slider-text {
+    width: 30px;
+}
+
+/* Color preview boxes */
+.color-boxes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.color-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.box {
+    width: 80%;
+    height: 120px;
+    border: 1px solid #898AC4;
+    border-radius: 8px;
+    margin-top: 5px;
+    padding: 0;
+}
+
+p {
+    font-size: 1rem;
+    font-family: "Roboto Mono", system-ui;
+    color: #2c2d59;
+    width: 100%;
+    margin: 10px 5px 5px 10px;
+    padding: 0;
 }
