@@ -123,3 +123,8 @@ toggleBtn.addEventListener('click', () => {
     }
     reset();
 });
+
+outputText.addEventListener("click", () => {
+    navigator.clipboard.writeText(outputText.textContent);
+    alert("Copied the text: " + outputText.textContent);
+});
