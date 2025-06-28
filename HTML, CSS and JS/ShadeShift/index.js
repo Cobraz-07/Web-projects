@@ -1,16 +1,18 @@
 // 1. Constants and variable declarations
-const hexInput = document.getElementById('color-input');
-const shadeInput = document.getElementById('shade-input');
-const inputColor = document.getElementById('inputColor');
-const outputColor = document.getElementById('outputColor');
-const percentageText = document.getElementById('slider-text');
-const outputText = document.getElementById('output-Hex');
-const inputText = document.getElementById('input-Hex');
-const toggleBtn = document.getElementById('toggleBtn');
-const lightenText = document.getElementById('lighten-text');
-const darkenText = document.getElementById('darken-text');
+const hexInput = document.getElementById('color-input'); // Input for hex color
+const shadeInput = document.getElementById('shade-input'); // Range slider for shade percentage
+const inputColor = document.getElementById('inputColor'); // Preview of input color
+const outputColor = document.getElementById('outputColor'); // Preview of output color
+const percentageText = document.getElementById('slider-text'); // Text showing percentage value
+const outputText = document.getElementById('output-Hex'); // Output hex value
+const inputText = document.getElementById('input-Hex'); // Input hex value display
+const toggleBtn = document.getElementById('toggleBtn'); // Button to toggle lighten/darken
+const lightenText = document.getElementById('lighten-text'); // Lighten label
+const darkenText = document.getElementById('darken-text'); // Darken label
 
 // 2. Function declarations
+
+// Checks if the input is a valid hex color
 function isValidHex(hex) {
     if (!hex) return false;
     if (/^#?[0-9A-Fa-f]*$/.test(hex)) {
@@ -20,6 +22,7 @@ function isValidHex(hex) {
     return false;
 };
 
+// Converts hex color to RGB object
 function hexToRgb(hex) {
     const strippedHex = hex.replace('#', '');
     let r, g, b;
@@ -35,6 +38,7 @@ function hexToRgb(hex) {
     return { r, g, b };
 };
 
+// Converts RGB values to hex string
 function rgbToHex(r, g, b) {
     r = Math.min(255, Math.max(0, parseInt(r, 10)));
     g = Math.min(255, Math.max(0, parseInt(g, 10)));
@@ -44,6 +48,7 @@ function rgbToHex(r, g, b) {
            b.toString(16).padStart(2, '0');
 };
 
+// Lightens a hex color by a percentage
 function lightenColor(hex, percentage) {
     let modifier = Math.floor((percentage / 100) * 255);
     let { r, g, b } = hexToRgb(hex);
@@ -53,6 +58,7 @@ function lightenColor(hex, percentage) {
     return rgbToHex(r, g, b);
 }
 
+// Darkens a hex color by a percentage
 function darkenColor(hex, percentage) {
     let modifier = Math.floor((percentage / 100) * 255);
     let { r, g, b } = hexToRgb(hex);
@@ -62,6 +68,7 @@ function darkenColor(hex, percentage) {
     return rgbToHex(r, g, b);
 }
 
+// Resets the slider and output to the original color
 function reset() {
     shadeInput.value = 0;
     percentageText.textContent = "0%";
@@ -70,6 +77,8 @@ function reset() {
 }
 
 // 3. Event listeners and main logic
+
+// Update input color preview and reset output when hex input changes
 hexInput.addEventListener("keyup", () => {
     if (isValidHex(hexInput.value)) {
         const value = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
@@ -81,15 +90,16 @@ hexInput.addEventListener("keyup", () => {
     reset();
 });
 
+// Update output color when slider changes
 shadeInput.addEventListener("input", () => {
     percentageText.textContent = shadeInput.value + "%";
-    if (isValidHex(hexInput.value)&& toggleBtn.classList.contains('active') === false) {
-        lightenColor(hexInput.value, shadeInput.value);
+    if (isValidHex(hexInput.value) && toggleBtn.classList.contains('active') === false) {
+        // Lighten mode
         const alteredColor = lightenColor(hexInput.value, shadeInput.value);
         outputColor.style.backgroundColor = "#" + alteredColor;
         outputText.textContent = "#" + alteredColor;
-    } else if (isValidHex(hexInput.value)&& toggleBtn.classList.contains('active')) {
-        darkenColor(hexInput.value, shadeInput.value);
+    } else if (isValidHex(hexInput.value) && toggleBtn.classList.contains('active')) {
+        // Darken mode
         const alteredColor = darkenColor(hexInput.value, shadeInput.value);
         outputColor.style.backgroundColor = "#" + alteredColor;
         outputText.textContent = "#" + alteredColor;
@@ -98,6 +108,7 @@ shadeInput.addEventListener("input", () => {
     }
 });
 
+// Toggle between lighten and darken modes
 toggleBtn.addEventListener('click', () => {
     if (toggleBtn.classList.contains('active')) {
         toggleBtn.classList.remove('active');
