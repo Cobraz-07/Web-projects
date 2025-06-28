@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags and page setup -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShadeShift</title>
+    <!-- Link to CSS and JS -->
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="index.js" defer></script>
 </head>
 <body>
     <main>
         <div class="container">
+            <!-- App Title -->
             <h1 class="title">ShadeShift</h1>
+            <!-- Hex color input -->
             <div class="input-container">
                 <label for="color-input">Choose a color:</label>
                 <input type="text" id="color-input" name="color-input" placeholder="#000000">
             </div>
+            <!-- Lighten/Darken toggle switch -->
             <div class="input-container">
                 <label class="" id="lighten-text">lighten</label>
-                <div id="toggleBtn" class="toggle-btn">
+                <div id="toggleBtn" class="toggle-btn" aria-pressed="false">
                     <div class="inner-circle"></div> 
                 </div>
                 <label class="unselected" id="darken-text">darken</label>
             </div>
+            <!-- Shade percentage slider -->
             <div class="input-container">
                 <label for="shade-input" id="slider-text">0%</label>
                 <input type="range" value="0" min="0" max="100" id="shade-input" name="shade-input">
             </div>
+            <!-- Color preview boxes -->
             <div class="color-boxes">
                 <div class="color-group">
                     <p>Input Color</p>

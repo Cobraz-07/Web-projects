@@ -112,10 +112,12 @@ shadeInput.addEventListener("input", () => {
 toggleBtn.addEventListener('click', () => {
     if (toggleBtn.classList.contains('active')) {
         toggleBtn.classList.remove('active');
+        toggleBtn.setAttribute('aria-pressed', 'false');
         lightenText.classList.remove('unselected');
         darkenText.classList.add('unselected');
     } else {
         toggleBtn.classList.add('active');
+        toggleBtn.setAttribute('aria-pressed', 'true');
         lightenText.classList.add('unselected');
         darkenText.classList.remove('unselected');
     }
