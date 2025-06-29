@@ -27,19 +27,19 @@
         </div>
 
         <!-- ===== HEX Mode Container ===== -->
-        <div class="container-hex" id="container-hex">
+        <section class="container-hex" id="container-hex" aria-label="HEX Mode">
             <h1 class="title">ShadeShift (HEX)</h1>
             <!-- Hex color input -->
             <div class="input-row">
                 <label for="color-input">Choose a color:</label>
-                <input type="text" id="color-input" name="color-input" placeholder="#000000">
+                <input type="text" id="color-input" name="color-input" placeholder="#000000" autocomplete="off">
             </div>
             <!-- Lighten/Darken toggle switch -->
             <div class="input-row">
                 <label id="lighten-text">lighten</label>
-                <div id="toggleBtn" class="light-dark-toggle" aria-pressed="false">
+                <button id="toggleBtn" class="light-dark-toggle" aria-pressed="false" type="button">
                     <div class="toggle-circle"></div> 
-                </div>
+                </button>
                 <label class="unselected" id="darken-text">darken</label>
             </div>
             <!-- Shade percentage slider -->
@@ -51,28 +51,28 @@
             <div class="color-preview-row">
                 <div class="color-group">
                     <p>Input Color</p>
-                    <div id="inputColor" class="color-box"></div>
-                    <p id="input-Hex"></p>
+                    <div id="inputColor" class="color-box" aria-label="Input Color Preview"></div>
+                    <p id="input-Hex" aria-live="polite"></p>
                 </div>
                 <div class="color-group">
                     <p>Output Color</p>
-                    <div id="outputColor" class="color-box"></div>
-                    <p id="output-Hex"></p>
+                    <div id="outputColor" class="color-box" aria-label="Output Color Preview"></div>
+                    <p id="output-Hex" aria-live="polite"></p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- ===== HSL Mode Container ===== -->
-        <div class="container-hsl hidden" id="container-hsl">
+        <section class="container-hsl hidden" id="container-hsl" aria-label="HSL Mode">
             <h1 class="title">ShadeShift (HSL)</h1>
             <!-- HSL color input -->
             <div class="input-row-hsl">
                 <label for="hue">Hue:</label>
-                <input type="text" id="hue" name="hue" placeholder="360">
+                <input type="number" id="hue" name="hue" placeholder="360" min="0" max="360" autocomplete="off">
                 <label for="saturation">Sat:</label>
-                <input type="text" id="saturation" name="saturation" placeholder="100">
+                <input type="number" id="saturation" name="saturation" placeholder="100" min="0" max="100" autocomplete="off">
                 <label for="lightness">Light:</label>
-                <input type="text" id="lightness" name="lightness" placeholder="50">
+                <input type="number" id="lightness" name="lightness" placeholder="50" min="0" max="100" autocomplete="off">
             </div>
             <!-- Lightness slider for HSL -->
             <div class="input-row">
@@ -83,16 +83,16 @@
             <div class="color-preview-row">
                 <div class="color-group">
                     <p>Input Color</p>
-                    <div id="input-color-hsl" class="color-box"></div>
-                    <p id="input-hsl"></p>
+                    <div id="input-color-hsl" class="color-box" aria-label="Input HSL Color Preview"></div>
+                    <p id="input-hsl" aria-live="polite"></p>
                 </div>
                 <div class="color-group">
                     <p>Output Color</p>
-                    <div id="output-color-hsl" class="color-box"></div>
-                    <p id="output-hsl"></p>
+                    <div id="output-color-hsl" class="color-box" aria-label="Output HSL Color Preview"></div>
+                    <p id="output-hsl" aria-live="polite"></p>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 </body>
 </html>
