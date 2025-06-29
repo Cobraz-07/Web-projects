@@ -24,6 +24,7 @@ const outputHsl = document.getElementById('output-hsl');
 const inputHsl = document.getElementById('input-hsl');
 const percentageTextHsl = document.getElementById('slider-text-hsl');
 
+
 // ===== 2. Utility Functions =====
 
 // Checks if the input is a valid hex color
@@ -35,6 +36,7 @@ function isValidHex(hex) {
     }
     return false;
 }
+
 
 // Converts hex color to RGB object
 function hexToRgb(hex) {
@@ -52,6 +54,7 @@ function hexToRgb(hex) {
     return { r, g, b };
 }
 
+
 // Converts RGB values to hex string
 function rgbToHex(r, g, b) {
     r = Math.min(255, Math.max(0, parseInt(r, 10)));
@@ -61,6 +64,7 @@ function rgbToHex(r, g, b) {
            g.toString(16).padStart(2, '0') +
            b.toString(16).padStart(2, '0');
 }
+
 
 // Lightens a hex color by a percentage
 function lightenColor(hex, percentage) {
@@ -72,6 +76,7 @@ function lightenColor(hex, percentage) {
     return rgbToHex(r, g, b);
 }
 
+
 // Darkens a hex color by a percentage
 function darkenColor(hex, percentage) {
     let modifier = Math.floor((percentage / 100) * 255);
@@ -82,6 +87,7 @@ function darkenColor(hex, percentage) {
     return rgbToHex(r, g, b);
 }
 
+
 // Checks if the input is a valid HSL color
 function isValidHSL(hue, saturation, lightness) {
     const h = Number(hue);
@@ -89,6 +95,7 @@ function isValidHSL(hue, saturation, lightness) {
     const l = Number(lightness);
     return h >= 0 && h <= 360 && s >= 0 && s <= 100 && l >= 0 && l <= 100;
 }
+
 
 // ===== 3. UI Update Functions =====
 
@@ -99,6 +106,7 @@ function reset() {
     outputColor.style.backgroundColor = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
     outputText.textContent = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
 }
+
 
 // Updates the HSL color preview and text
 function setHSL() {
@@ -120,10 +128,11 @@ function setHSL() {
     }
 }
 
+
 // ===== 4. Event Listeners and Main Logic =====
 
 // Update input color preview and reset output when hex input changes
-hexInput.addEventListener("keyup", () => {
+hexInput.addEventListener("input", () => {
     if (isValidHex(hexInput.value)) {
         const value = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
         inputColor.style.backgroundColor = value;
@@ -133,6 +142,7 @@ hexInput.addEventListener("keyup", () => {
     }
     reset();
 });
+
 
 // Update output color when slider changes
 shadeInput.addEventListener("input", () => {
@@ -152,6 +162,7 @@ shadeInput.addEventListener("input", () => {
     }
 });
 
+
 // Toggle between lighten and darken modes
 toggleBtn.addEventListener('click', () => {
     if (toggleBtn.classList.contains('active')) {
@@ -168,16 +179,19 @@ toggleBtn.addEventListener('click', () => {
     reset();
 });
 
-// Copy output hex and HSL to clipboard
+
+// Copy output hex to clipboard
 outputText.addEventListener("click", () => {
     navigator.clipboard.writeText(outputText.textContent);
     alert("Copied the text: " + outputText.textContent);
 });
 
+// Copy output HSL to clipboard
 outputHsl.addEventListener("click", () => {
     navigator.clipboard.writeText(outputHsl.textContent);
     alert("Copied the text: " + outputHsl.textContent);
 });
+
 
 // Toggle between HEX and HSL modes
 toggleSwitch.addEventListener('click', () => {
@@ -193,6 +207,7 @@ toggleSwitch.addEventListener('click', () => {
         containerHsl.classList.add('hidden');
     }
 });
+
 
 // HSL input listeners
 hue.addEventListener('input', setHSL);
