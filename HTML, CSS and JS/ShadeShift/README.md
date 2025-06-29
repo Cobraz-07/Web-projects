@@ -1,4 +1,4 @@
-# ShadeShift
+# ShadeShift (https://cobraz-07.github.io/Web-modules/HTML,%20CSS%20and%20JS/ShadeShift/index.html)
 
 ShadeShift is a web tool that allows you to instantly lighten or darken any HEX or HSL color using a simple slider and toggle. Preview and copy your adjusted color in real time!
 ![Captura de pantalla 2025-06-29 205438](https://github.com/user-attachments/assets/3bd61219-b2f2-49fa-b145-6fb1e924afb0)
