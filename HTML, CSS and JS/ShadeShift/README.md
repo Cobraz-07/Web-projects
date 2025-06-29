@@ -64,6 +64,6 @@ MIT License
 ## Credits
 
 - [Google Fonts: Bitcount Grid Double, Poppins, Roboto Mono](https://fonts.google.com/)
-- Developed by [Your Name or GitHub Username]
+- Developed by Rafael Pérez de Lema
 
 ---
