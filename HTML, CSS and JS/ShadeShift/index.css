@@ -1,15 +1,10 @@
+/* ===== Imports ===== */
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
-/* General resets and body */
-* {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    height: 100vh;
-}
+/* ===== General Resets and Body ===== */
+* { margin: 0; padding: 0; }
+html { height: 100vh; }
 
 body {
     height: 100%;
@@ -24,11 +19,59 @@ main {
     justify-content: center;
     width: 100%;
     height: 100%;
-    flex-direction: column;;
+    flex-direction: column;
 }
 
-/* Container for the app */
-.container {
+/* ===== Mode Toggle Switch ===== */
+.mode-toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    background-color: #A2AADB;
+    border: 5px solid #898AC4;
+    border-radius: 20px;
+}
+
+.mode-toggle-switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    background-color: #A2AADB;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+.mode-toggle-text {
+    font-size: 1rem;
+    font-family: "Roboto Mono", system-ui;
+    color: #2c2d59;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 10px 20px;
+}
+
+.mode-selector {
+    transition: all 0.3s ease-in-out;
+}
+
+.selected {
+    color: #2c2d59;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    background-color: #898AC4;
+    border-radius: 10px;
+}
+
+/* ===== Containers ===== */
+.container-hex, .container-hsl {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,97 +88,7 @@ main {
 }
 
 .container-hsl {
-    display: flex;
-    align-items: center;
     justify-content: flex-start;
-    flex-direction: column;
-    text-align: center;
-    width: 396px;
-    height: 480px;
-    background-color: #A2AADB;
-    border: 5px solid #898AC4;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 8px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px 20px;
-}
-
-.toggle-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    height: auto;
-    margin: 20px;
-    padding: 10px;
-    background-color: #A2AADB;
-    border: 5px solid #898AC4;
-    border-radius: 20px;
-}
-
-.toggle-switch {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 20px;
-    background-color: #A2AADB;
-    cursor: pointer;
-    height: 100%;
-    width: 100%;
-}
-
-.toggle-text {
-    font-size: 1rem;
-    font-family: "Roboto Mono", system-ui;
-    color: #2c2d59;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    padding: 10px 20px;
-}
-
-.selector {
-    transition: all 0.3s ease-in-out;
-}
-
-.selected {
-    color: #2c2d59;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    background-color: #898AC4;
-    border-radius: 10px;
-}
-
-/* App Title */
-.title {
-    font-size: 2rem;
-    margin-bottom: 16px;
-    font-family: "Bitcount Grid Double", system-ui;
-}
-
-/* Hex color input */
-.input-container {
-    display: flex;
-    justify-content: left;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    margin-bottom: 20px;
-    height: min-content;
-    padding: 5px;
-}
-
-.input-container-hsl {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
-    margin-bottom: 20px;
-    height: min-content;
 }
 
 .hidden {
@@ -144,6 +97,31 @@ main {
     height: 0;
 }
 
+/* ===== Titles ===== */
+.title {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    font-family: "Bitcount Grid Double", system-ui;
+}
+
+/* ===== Input Rows ===== */
+.input-row, .input-row-hsl {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    height: min-content;
+    padding: 5px;
+}
+
+.input-row-hsl {
+    justify-content: center;
+    gap: 5px;
+}
+
+/* ===== Inputs and Labels ===== */
 [type="text"] {
     padding: 5px;
 }
@@ -162,8 +140,8 @@ label {
     text-align: center; 
 }
 
-/* Lighten/Darken toggle switch */
-.toggle-btn {
+/* ===== Lighten/Darken Toggle Switch ===== */
+.light-dark-toggle {
     width: 50px;
     height: 25px;
     background-color: #898AC4;
@@ -172,7 +150,7 @@ label {
     cursor: pointer;
 }
 
-.inner-circle {
+.toggle-circle {
     width: 20px;
     height: 20px;
     background-color: #2c2d59;
@@ -183,8 +161,8 @@ label {
     transition: all 0.3s ease-in-out;
 }
 
-.toggle-btn.active .inner-circle {
-    left: 27.5px; /* Move the circle to the right */
+.light-dark-toggle.active .toggle-circle {
+    left: 27.5px;
 }
 
 .unselected {
@@ -192,7 +170,7 @@ label {
     transition: all 0.3s ease-in-out;
 }
 
-/* Shade percentage slider */
+/* ===== Sliders ===== */
 [type="range"] {
     width: 50%;
     accent-color: #898AC4;
@@ -202,8 +180,8 @@ label {
     width: 30px;
 }
 
-/* Color preview boxes */
-.color-boxes {
+/* ===== Color Preview Boxes ===== */
+.color-preview-row {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -220,7 +198,7 @@ label {
     width: 50%;
 }
 
-.box {
+.color-box {
     width: 80%;
     height: 120px;
     border: 1px solid #898AC4;
@@ -239,6 +217,12 @@ p {
 }
 
 #output-Hex:hover {
+    cursor: grab;
+    background-color: #898AC4;
+    border-radius: 5px;
+}
+
+#output-hsl:hover {
     cursor: grab;
     background-color: #898AC4;
     border-radius: 5px;
