@@ -60,9 +60,7 @@ function rgbToHex(r, g, b) {
     r = Math.min(255, Math.max(0, parseInt(r, 10)));
     g = Math.min(255, Math.max(0, parseInt(g, 10)));
     b = Math.min(255, Math.max(0, parseInt(b, 10)));
-    return r.toString(16).padStart(2, '0') +
-           g.toString(16).padStart(2, '0') +
-           b.toString(16).padStart(2, '0');
+    return `${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
 }
 
 
@@ -102,9 +100,9 @@ function isValidHSL(hue, saturation, lightness) {
 // Resets the slider and output to the original color
 function reset() {
     shadeInput.value = 0;
-    percentageText.textContent = "0%";
-    outputColor.style.backgroundColor = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
-    outputText.textContent = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
+    percentageText.textContent = `0%`;
+    outputColor.style.backgroundColor = hexInput.value.startsWith('#') ? hexInput.value : `#${hexInput.value}`;
+    outputText.textContent = hexInput.value.startsWith('#') ? hexInput.value : `#${hexInput.value}`;
 }
 
 
@@ -119,7 +117,7 @@ function setHSL() {
         outputcolorHsl.style.backgroundColor = `hsl(${h}, ${s}%, ${lightnessInput.value}%)`;
         inputHsl.textContent = `hsl(${h}, ${s}%, ${l}%)`;
         outputHsl.textContent = `hsl(${h}, ${s}%, ${lightnessInput.value}%)`;
-        percentageTextHsl.textContent = lightnessInput.value + "%";
+        percentageTextHsl.textContent = `${lightnessInput.value}%`;
     } else {
         inputcolorHsl.style.backgroundColor = "";
         inputHsl.textContent = "Invalid HSL";
@@ -134,7 +132,7 @@ function setHSL() {
 // Update input color preview and reset output when hex input changes
 hexInput.addEventListener("input", () => {
     if (isValidHex(hexInput.value)) {
-        const value = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
+        const value = hexInput.value.startsWith('#') ? hexInput.value : `#${hexInput.value}`;
         inputColor.style.backgroundColor = value;
         inputText.textContent = value;
     } else {
@@ -146,17 +144,17 @@ hexInput.addEventListener("input", () => {
 
 // Update output color when slider changes
 shadeInput.addEventListener("input", () => {
-    percentageText.textContent = shadeInput.value + "%";
+    percentageText.textContent = `${shadeInput.value}%`;
     if (isValidHex(hexInput.value) && !toggleBtn.classList.contains('active')) {
         // Lighten mode
         const alteredColor = lightenColor(hexInput.value, shadeInput.value);
-        outputColor.style.backgroundColor = "#" + alteredColor;
-        outputText.textContent = "#" + alteredColor;
+        outputColor.style.backgroundColor = `#${alteredColor}`;
+        outputText.textContent = `#${alteredColor}`;
     } else if (isValidHex(hexInput.value) && toggleBtn.classList.contains('active')) {
         // Darken mode
         const alteredColor = darkenColor(hexInput.value, shadeInput.value);
-        outputColor.style.backgroundColor = "#" + alteredColor;
-        outputText.textContent = "#" + alteredColor;
+        outputColor.style.backgroundColor = `#${alteredColor}`;
+        outputText.textContent = `#${alteredColor}`;
     } else {
         outputColor.style.backgroundColor = "";
     }
@@ -183,13 +181,13 @@ toggleBtn.addEventListener('click', () => {
 // Copy output hex to clipboard
 outputText.addEventListener("click", () => {
     navigator.clipboard.writeText(outputText.textContent);
-    alert("Copied the text: " + outputText.textContent);
+    alert(`Copied the text: ${outputText.textContent}`);
 });
 
 // Copy output HSL to clipboard
 outputHsl.addEventListener("click", () => {
     navigator.clipboard.writeText(outputHsl.textContent);
-    alert("Copied the text: " + outputHsl.textContent);
+    alert(`Copied the text: ${outputHsl.textContent}`);
 });
 
 
