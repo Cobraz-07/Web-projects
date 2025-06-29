@@ -9,6 +9,20 @@ const inputText = document.getElementById('input-Hex'); // Input hex value displ
 const toggleBtn = document.getElementById('toggleBtn'); // Button to toggle lighten/darken
 const lightenText = document.getElementById('lighten-text'); // Lighten label
 const darkenText = document.getElementById('darken-text'); // Darken label
+const toggleSwitch = document.getElementById('toggle-switch'); // Toggle switch element
+const hex = document.getElementById('hex'); // HEX mode element
+const hsl = document.getElementById('hsl'); // HSL mode element
+const containerHsl = document.getElementById('container-hsl'); // Container for HSL mode
+const containerHex = document.getElementById('container-hex'); // Container for HEX mode
+const hue = document.getElementById('hue'); // HSL hue input
+const saturation = document.getElementById('saturation'); // HSL saturation input
+const lightness = document.getElementById('lightness'); // HSL lightness input
+const lightnessInput = document.getElementById('lightness-input'); // HSL lightness input slider
+const inputcolorHsl = document.getElementById('input-color-hsl'); // Preview of input HSL color
+const outputcolorHsl = document.getElementById('output-color-hsl'); // Preview of output HSL color
+const outputHsl = document.getElementById('output-hsl'); // Output HSL text
+const inputHsl = document.getElementById('input-hsl'); // Input HSL text
+const percentageTextHsl = document.getElementById('slider-text-hsl'); // Text showing percentage value for HSL
 
 // 2. Function declarations
 
@@ -76,6 +90,32 @@ function reset() {
     outputText.textContent = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
 }
 
+function isValidHSL(hue, saturation, lightness) {
+    const h = Number(hue);
+    const s = Number(saturation);
+    const l = Number(lightness);
+    return h >= 0 && h <= 360 && s >= 0 && s <= 100 && l >= 0 && l <= 100;
+}
+
+function setHSL() {
+    const h = Number(hue.value);
+    const s = Number(saturation.value);
+    const l = Number(lightness.value);
+
+    if (isValidHSL(h, s, l)) {
+        inputcolorHsl.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+        outputcolorHsl.style.backgroundColor = `hsl(${h}, ${s}%, ${lightnessInput.value}%)`;
+        inputHsl.textContent = `hsl(${h}, ${s}%, ${l}%)`;
+        outputHsl.textContent = `hsl(${h}, ${s}%, ${lightnessInput.value}%)`;
+        percentageTextHsl.textContent = lightnessInput.value + "%";
+    } else {
+        inputcolorHsl.style.backgroundColor = "";
+        inputHsl.textContent = "Invalid HSL";
+        outputcolorHsl.style.backgroundColor = "";
+        outputHsl.textContent = "Invalid HSL";
+    }
+}
+
 // 3. Event listeners and main logic
 
 // Update input color preview and reset output when hex input changes
@@ -127,4 +167,35 @@ toggleBtn.addEventListener('click', () => {
 outputText.addEventListener("click", () => {
     navigator.clipboard.writeText(outputText.textContent);
     alert("Copied the text: " + outputText.textContent);
+});
+
+toggleSwitch.addEventListener('click', () => {
+    if (hex.classList.contains('selected')) {
+        hex.classList.remove('selected');
+        hsl.classList.add('selected');
+        containerHex.classList.add('hidden');
+        containerHsl.classList.remove('hidden');
+
+    } else {
+        hsl.classList.remove('selected');
+        hex.classList.add('selected');
+        containerHex.classList.remove('hidden');
+        containerHsl.classList.add('hidden');
+    }
+});
+
+hue.addEventListener('input', () => {
+    setHSL();
+});
+
+saturation.addEventListener('input', () => {
+    setHSL();
+});
+
+lightness.addEventListener('input', () => {
+    setHSL();
+});
+
+lightnessInput.addEventListener('input', () => {
+    setHSL();
 });

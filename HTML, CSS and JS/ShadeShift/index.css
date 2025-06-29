@@ -24,6 +24,7 @@ main {
     justify-content: center;
     width: 100%;
     height: 100%;
+    flex-direction: column;;
 }
 
 /* Container for the app */
@@ -40,6 +41,70 @@ main {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 8px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px 20px;
+}
+
+.container-hsl {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+    width: 396px;
+    height: 480px;
+    background-color: #A2AADB;
+    border: 5px solid #898AC4;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 8px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px 20px;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    background-color: #A2AADB;
+    border: 5px solid #898AC4;
+    border-radius: 20px;
+}
+
+.toggle-switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    background-color: #A2AADB;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+.toggle-text {
+    font-size: 1rem;
+    font-family: "Roboto Mono", system-ui;
+    color: #2c2d59;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 10px 20px;
+}
+
+.selector {
+    transition: all 0.3s ease-in-out;
+}
+
+.selected {
+    color: #2c2d59;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    background-color: #898AC4;
+    border-radius: 10px;
 }
 
 /* App Title */
@@ -62,6 +127,23 @@ main {
     padding: 5px;
 }
 
+.input-container-hsl {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+    height: min-content;
+}
+
+.hidden {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
 [type="text"] {
     padding: 5px;
 }
@@ -73,6 +155,11 @@ label {
     margin: 10px 5px;
     padding: 0;
     transition: all 0.3s ease-in-out;
+}
+
+#hue, #saturation, #lightness {
+    width: 40px;
+    text-align: center; 
 }
 
 /* Lighten/Darken toggle switch */
@@ -111,7 +198,7 @@ label {
     accent-color: #898AC4;
 }
 
-#slider-text {
+#slider-text, #slider-text-hsl {
     width: 30px;
 }
 
@@ -119,9 +206,10 @@ label {
 .color-boxes {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     width: 100%;
+    height: 100%;
 }
 
 .color-group {

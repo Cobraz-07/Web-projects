@@ -14,9 +14,20 @@
 </head>
 <body>
     <main>
-        <div class="container">
+        <div class="toggle-container">
+            <!-- Toggle switch for HEX/HSL mode -->
+            <div class="toggle-switch" id="toggle-switch">
+                <div class="selected selector" id="hex">
+                    <p class="toggle-text">HEX</p>
+                </div>
+                <div class="selector" id="hsl">
+                    <p class="toggle-text">HSL</p>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="container-hex">
             <!-- App Title -->
-            <h1 class="title">ShadeShift</h1>
+            <h1 class="title">ShadeShift (HEX)</h1>
             <!-- Hex color input -->
             <div class="input-container">
                 <label for="color-input">Choose a color:</label>
@@ -46,6 +57,37 @@
                     <p>Output Color</p>
                     <div id="outputColor" class="box"></div>
                     <p id="output-Hex"></p>
+                </div>
+            </div>
+        </div>
+        <div class="container-hsl hidden" id="container-hsl">
+            <!-- App Title -->
+            <h1 class="title">ShadeShift (HSL)</h1>
+            <!-- Hex color input -->
+            <div class="input-container-hsl">
+                <label for="color-input">Hue:</label>
+                <input type="text" id="hue" name="hue" placeholder="360">
+                <label for="color-input">Sat:</label>
+                <input type="text" id="saturation" name="saturation" placeholder="100">
+                <label for="color-input">Light:</label>
+                <input type="text" id="lightness" name="lightness" placeholder="50">
+            </div>
+            <!-- Shade percentage slider -->
+            <div class="input-container">
+                <label for="lightness-input" id="slider-text-hsl">0%</label>
+                <input type="range" value="0" min="0" max="100" id="lightness-input" name="lightness-input">
+            </div>
+            <!-- Color preview boxes -->
+            <div class="color-boxes">
+                <div class="color-group">
+                    <p>Input Color</p>
+                    <div id="input-color-hsl" class="box"></div>
+                    <p id="input-hsl"></p>
+                </div>
+                <div class="color-group">
+                    <p>Output Color</p>
+                    <div id="output-color-hsl" class="box"></div>
+                    <p id="output-hsl"></p>
                 </div>
             </div>
         </div>
