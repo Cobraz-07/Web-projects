@@ -1,0 +1,32 @@
+---
+import '@/styles/global.css';
+const platform = "github";
+const username = "Cobraz-07";
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en" class="w-screen">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<title></title>
+	</head>
+	<body class="m-5">
+		<header>
+            <nav>
+                <div class="bg-neutral-200 m-auto w-min p-2 flex gap-5">
+                    <a href="/" class="hover:bg-neutral-300 p-1">Home</a>
+                    <a href="/about/" class="hover:bg-neutral-300 p-1">About</a>
+                    <a href="/blog/" class="hover:bg-neutral-300 p-1">Blog</a>
+                </div>
+            </nav>
+        </header>
+		    <slot />
+		<footer>
+            <p>Learn more about my projects on <a class="text-blue-500 hover:text-blue-200" href={`https://www.${platform}.com/${username}`}>{platform}</a>!</p>
+        </footer>
+	</body>
+</html>
