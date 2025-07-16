@@ -21,13 +21,14 @@ const goal = 1;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+        <link href="/src/styles/global.css" rel="stylesheet">
 		<title>{pageTitle}</title>
 	</head>
 	<body>
         <a href="/">Home</a>
         <a href="/about/">About</a>
         <a href="/blog/">Blog</a>
-		<h1 class="">{pageTitle}</h1>
+		<h1 class="text-purple-500 text-[4rem]">{pageTitle}</h1>
         <p>I am working through Astro's introductory tutorial.</p>
         <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
 
