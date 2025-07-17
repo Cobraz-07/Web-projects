@@ -7,5 +7,12 @@ import Layout from "./layout.astro";
     <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
     <p><em>{frontmatter.description}</em></p>
     <p>Written by: {frontmatter.author}</p>
+
+    <div class="flex flex-wrap">
+        {frontmatter.tags.map((tag: string) => (
+        <p class="m-[0.25em] border-dotted border-1 border-[#a1a1a1] py-[.5em] px-[1em] text-[1.15em] bg-[#F8FCFD]" ><a href={`/tags/${tag}`}>{tag}</a></p>
+        ))}
+    </div>
+
     <slot />
 </Layout>

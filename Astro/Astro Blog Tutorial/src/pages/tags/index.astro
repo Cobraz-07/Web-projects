@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/layout.astro';
+const pageTitle = "Tag index"
+const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+const tags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
+let i = ""
+
+import '@/styles/global.css';
+---
+<Layout pageTitle = {pageTitle}>
+  <h1>{pageTitle}</h1>
+  <p>This is where i link to all the tags my blog posts might have.</p>
+  <div class="flex flex-wrap">
+    {tags.map((tag) => (
+      <p class="m-[0.25em] border-dotted border-1 border-[#a1a1a1] py-[.5em] px-[1em] text-[1.15em] bg-[#F8FCFD]"><a href={`/tags/${tag}`}>{tag}</a></p>
+    ))}
+  </div>
+</Layout>
