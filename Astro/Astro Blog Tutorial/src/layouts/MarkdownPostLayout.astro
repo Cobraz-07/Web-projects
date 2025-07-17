@@ -4,7 +4,7 @@ import Layout from "./layout.astro";
 ---
 <Layout pageTitle={frontmatter.title}>
     <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
+    <p>{frontmatter.pubDate.toLocaleDateString()}</p>
     <p><em>{frontmatter.description}</em></p>
     <p>Written by: {frontmatter.author}</p>
 
